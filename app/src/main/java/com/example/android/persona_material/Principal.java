@@ -1,5 +1,6 @@
 package com.example.android.persona_material;
 
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -20,6 +21,7 @@ private RecyclerView listado;
     private Resources res;
     private AdaptadorPersona adapter;
     private LinearLayoutManager llm;
+    private Intent i;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,12 +30,8 @@ private RecyclerView listado;
         setSupportActionBar(toolbar);
         listado = (RecyclerView) findViewById(R.id.opciones);
         res = this.getResources();
-        personas = new ArrayList<>();
-        personas.add(new Persona("Damian","Torres",R.drawable.images));
-        personas.add(new Persona("Katerine","Oquendo",R.drawable.images2));
-        personas.add(new Persona("Juan","Perez",R.drawable.images));
-        personas.add(new Persona("laura","Mantilla",R.drawable.images3));
-        personas.add(new Persona("Angelina","Torres",R.drawable.images2));
+        personas = Datos.obtenerPersonas();
+
 
         llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
@@ -47,8 +45,8 @@ private RecyclerView listado;
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                i = new Intent(Principal.this,Crear_Persona.class);
+                startActivity(i);
             }
         });
     }
