@@ -45,6 +45,16 @@
                     android:text="TextView"
                     android:textAlignment="center"
                     android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/lblcedula"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="serif"
+                    android:text="TextView"
+                    android:textAlignment="center"
+                    android:textSize="18sp" />
             </LinearLayout>
         </LinearLayout>
     </android.support.v7.widget.CardView>

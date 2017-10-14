@@ -19,7 +19,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Crear_Persona"></activity>
+        <activity android:name=".Crear_Persona" />
+        <activity android:name=".Detalle_persona"
+           android:theme="@style/AppTheme.NoActionBar"
+            ></activity>
+
     </application>
 
 </manifest>

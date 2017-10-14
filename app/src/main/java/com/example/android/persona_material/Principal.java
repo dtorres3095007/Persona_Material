@@ -15,7 +15,7 @@ import android.view.MenuItem;
 
 import java.util.ArrayList;
 
-public class Principal extends AppCompatActivity {
+public class Principal extends AppCompatActivity implements  AdaptadorPersona.OnPersonaClickListener{
 private RecyclerView listado;
     private ArrayList<Persona> personas;
     private Resources res;
@@ -26,17 +26,18 @@ private RecyclerView listado;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
+        res = this.getResources();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         listado = (RecyclerView) findViewById(R.id.opciones);
-        res = this.getResources();
+
         personas = Datos.obtenerPersonas();
 
 
         llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
 
-        adapter = new AdaptadorPersona(getApplicationContext(),personas);
+        adapter = new AdaptadorPersona(getApplicationContext(),personas,this);
 
         listado.setLayoutManager(llm);
         listado.setAdapter(adapter);
@@ -71,5 +72,20 @@ private RecyclerView listado;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onPersonaClick(Persona p) {
+        Intent i = new Intent(Principal.this,Detalle_persona.class);
+        Bundle b = new Bundle();
+        b.putString("cedula",p.getCedula());
+        b.putString("nombre",p.getNombre());
+        b.putString("apellido",p.getApellido());
+        String genero_vector[]=res.getStringArray(R.array.sexo);
+        b.putString("sexo",genero_vector[p.getSexo()]);
+        b.putInt("foto",p.getFoto());
+        i.putExtra("datos",b);
+        startActivity(i);
+
     }
 }

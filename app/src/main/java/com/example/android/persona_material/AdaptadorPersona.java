@@ -19,10 +19,12 @@ import java.util.ArrayList;
 public class AdaptadorPersona extends RecyclerView.Adapter<AdaptadorPersona.PersonaViewHolder> {
     private ArrayList<Persona> personas;
     private Resources res;
+    private OnPersonaClickListener clickListener;
 
-    public AdaptadorPersona(Context contexto, ArrayList<Persona> personas) {
+    public AdaptadorPersona(Context contexto, ArrayList<Persona> personas,OnPersonaClickListener clickListener) {
         this.personas = personas;
         this.res = contexto.getResources();
+        this.clickListener=clickListener;
     }
 
     @Override
@@ -37,6 +39,13 @@ public class AdaptadorPersona extends RecyclerView.Adapter<AdaptadorPersona.Pers
         holder.foto.setImageDrawable(ResourcesCompat.getDrawable(res,p.getFoto(),null));
         holder.nombre.setText(p.getNombre());
         holder.apellido.setText(p.getApellido());
+        holder.cedula.setText(p.getCedula());
+        holder.v.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                clickListener.onPersonaClick(p);
+            }
+        });
     }
 
     @Override
@@ -47,15 +56,20 @@ public class AdaptadorPersona extends RecyclerView.Adapter<AdaptadorPersona.Pers
     public static  class  PersonaViewHolder extends RecyclerView.ViewHolder{
         private ImageView foto;
         private TextView nombre;
-        private TextView apellido;
+        private TextView apellido,cedula;
         private View v;
         public PersonaViewHolder(View itemView){
             super(itemView);
-            //v = itemView;
+            v = itemView;
             foto = (ImageView) itemView.findViewById(R.id.idFoto);
             nombre = (TextView) itemView.findViewById(R.id.lblnombre);
             apellido = (TextView) itemView.findViewById(R.id.lblapellido);
+            cedula = (TextView) itemView.findViewById(R.id.lblcedula);
 
         }
+    }
+
+    public interface  OnPersonaClickListener{
+        void onPersonaClick(Persona p);
     }
 }
