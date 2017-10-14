@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.ArrayAdapter;
+import android.widget.TextView;
+
 import java.util.ArrayList;
 
 public class Crear_Persona extends AppCompatActivity {
@@ -17,6 +19,7 @@ public class Crear_Persona extends AppCompatActivity {
     private  EditText txtapellido,txtcedula;
     private TextInputLayout icajaNombre;
     private TextInputLayout icajaApellido;
+    private TextInputLayout icajacedula;
     ArrayList<Integer> foto;
     private  Resources res;
     private Spinner genero_spiner;
@@ -36,6 +39,7 @@ public class Crear_Persona extends AppCompatActivity {
         genero_spiner.setAdapter(adapter_genero);
         icajaNombre = (TextInputLayout)findViewById(R.id.cajanombre);
         icajaApellido = (TextInputLayout)findViewById(R.id.cajaapellido);
+        icajacedula = (TextInputLayout)findViewById(R.id.cajacedula);
 
     }
 public void IniciarFotos(){
@@ -45,12 +49,14 @@ public void IniciarFotos(){
     foto.add(R.drawable.images3);
 }
     public void Guardar(View v){
-        int opcion_genero = genero_spiner.getSelectedItemPosition();
-        //int cedula = Integer.parseInt(cajacedula.getText().toString());
-        Persona p = new Persona(txtcedula.getText().toString(), txtnombre.getText().toString().trim(), txtapellido.getText().toString().trim(),opcion_genero,Metodos.fotoAleatoria(foto));
-        p.guardar();
-        Snackbar.make(v,res.getString(R.string.mensaje_exito),Snackbar.LENGTH_LONG).setAction("action",null).show();
-        limpiar();
+        if (Validar()) {
+            int opcion_genero = genero_spiner.getSelectedItemPosition();
+            //int cedula = Integer.parseInt(cajacedula.getText().toString());
+            Persona p = new Persona(txtcedula.getText().toString(), txtnombre.getText().toString().trim(), txtapellido.getText().toString().trim(), opcion_genero, Metodos.fotoAleatoria(foto));
+            p.guardar();
+            Snackbar.make(v, res.getString(R.string.mensaje_exito), Snackbar.LENGTH_LONG).setAction("action", null).show();
+            limpiar();
+        }
     }
     public void limpiar(){
         txtnombre.setText("");
@@ -68,5 +74,20 @@ public void IniciarFotos(){
         Intent i = new Intent(Crear_Persona.this,Principal.class);
         startActivity(i);
     }
+    public boolean Validar(){
+        if (Validar_aux(txtnombre,icajaNombre))return false;
+        else if (Validar_aux(txtcedula,icajacedula))return false;
+        else if (Validar_aux(txtapellido,icajaApellido))return false;
+        return true;
+    }
 
+    public boolean Validar_aux(TextView t, TextInputLayout ct){
+        if (t.getText().toString().isEmpty()){
+            t.requestFocus();
+            ct.setError(res.getString(R.string.no_vacio));
+            return  true;
+        }
+        ct.setError("");
+        return false;
+    }
 }

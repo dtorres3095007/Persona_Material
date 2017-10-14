@@ -27,7 +27,10 @@ public class Persona {
         this.sexo=0;
         this.foto = foto;
     }
+    public Persona(String cedula){
+        this.cedula=cedula;
 
+    }
 
     public int getSexo() {
         return sexo;

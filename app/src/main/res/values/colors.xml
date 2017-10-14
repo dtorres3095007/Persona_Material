@@ -4,10 +4,12 @@
     <color name="colorPrimary">#F44336</color>
     <color name="colorPrimaryDark">#ea9696</color>
     <color name="colorPrimaryLight">#FFCDD2</color>
-    <color name="colorAccent">#f4baa7</color>
+    <color name="colorAccent">#E75043</color>
     <color name="colorPrimaryText">#212121</color>
     <color name="colorSecondaryText">#757575</color>
-    <color name="icons">#FFFFFF</color>
-    <color name="divider">#f6af99</color>
+    <color name="icons">#D8D8D8</color>
+    <color name="divider">#FA5858</color>
+    <color name="shadowColor">#66000000</color>
+    <color name="colorRipple">#99FFFFFF</color>
 
 </resources>

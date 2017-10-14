@@ -15,4 +15,5 @@ public class Metodos {
         fotoSel = r.nextInt(fotos.size());
         return fotos.get(fotoSel);
     }
+
 }
