@@ -45,7 +45,7 @@ public class Datos {
         return -1;
 
     }
-public static int Modificar(String nombre,String apellido,String cedula,String cedulaV){
+public static int Modificar(String nombre,String apellido,String cedula,String cedulaV,int sexo){
 
    int i =ExistePersonaIndex(cedula);
     if (i>-1) {
@@ -55,6 +55,7 @@ public static int Modificar(String nombre,String apellido,String cedula,String c
             p.setApellido(apellido);
             p.setCedula(cedulaV);
             p.setNombre(nombre);
+            p.setSexo(sexo);
             return 1;
         }
         return 3;

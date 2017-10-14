@@ -60,7 +60,7 @@ public void Modificar(View v){
     String nom = txtnombre.getText().toString();
     String ape = txtapellido.getText().toString();
     String ced = txtcedula.getText().toString();
-   int mod =Datos.Modificar(nom,ape,cedula,ced);
+   int mod =Datos.Modificar(nom,ape,cedula,ced,genero_spiner.getSelectedItemPosition());
     Snackbar.make(v, ""+mod, Snackbar.LENGTH_LONG).setAction("action", null).show();
     if (mod==1){
         Snackbar.make(v, res.getString(R.string.mensaje_exito_modificar), Snackbar.LENGTH_LONG).setAction("action", null).show();
