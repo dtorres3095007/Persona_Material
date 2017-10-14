@@ -191,7 +191,7 @@
         >
 
         <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/menu_modificar"
+            android:id="@+id/menu_eliminaar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="Eliminar"
@@ -200,10 +200,10 @@
             fab:fab_size="mini" />
 
         <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/menu_eliminar"
+            android:id="@+id/menu_modificar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="Eliminar"
+            android:onClick="ModificarPersona"
             android:src="@android:drawable/ic_menu_edit"
             fab:fab_label=""
             fab:fab_size="mini" />

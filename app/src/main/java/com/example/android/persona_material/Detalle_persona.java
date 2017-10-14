@@ -17,13 +17,15 @@ import android.widget.TextView;
 public class Detalle_persona extends AppCompatActivity {
 private CollapsingToolbarLayout collapsingToolbarLayout;
     private Persona p;
-    private String cedula,nombre,apellido,sexo;
+    private String cedula,nombre,apellido;
+    private int sexo;
     private Bundle bundle;
     private TextView nom,ced,apel,se;
     private Intent i;
     private int fot;
     private ImageView foto;
     private Resources res;
+    String genero_vector[];
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +34,7 @@ private CollapsingToolbarLayout collapsingToolbarLayout;
         setSupportActionBar(toolbar);
         //getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
         res = this.getResources();
+        genero_vector=res.getStringArray(R.array.sexo);
         collapsingToolbarLayout=(CollapsingToolbarLayout) findViewById(R.id.collapsingtoolbard);
         foto = (ImageView) findViewById(R.id.fotopersona);
         nom = (TextView) findViewById(R.id.txt_tbl_nombre);
@@ -43,12 +46,12 @@ private CollapsingToolbarLayout collapsingToolbarLayout;
         cedula = bundle.getString("cedula");
         nombre = bundle.getString("nombre");
         apellido = bundle.getString("apellido");
-        sexo = bundle.getString("sexo");
+        sexo = bundle.getInt("sexo");
         fot = bundle.getInt("foto");
         nom.setText(nombre);
         ced.setText(cedula);
         apel.setText(apellido);
-        se.setText(sexo);
+        se.setText(genero_vector[sexo]);
 
         foto.setImageDrawable(ResourcesCompat.getDrawable(res,fot,null));
         collapsingToolbarLayout.setTitle(nombre+" "+apellido);
@@ -91,5 +94,10 @@ private CollapsingToolbarLayout collapsingToolbarLayout;
         startActivity(i);
     }
 
+    public void ModificarPersona(View v) {
+        Intent i = new Intent(Detalle_persona.this,modificar_persona.class);
+        i.putExtra("datos",bundle);
+        startActivity(i);
 
+    }
 }

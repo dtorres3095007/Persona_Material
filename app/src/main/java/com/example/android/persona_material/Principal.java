@@ -81,8 +81,8 @@ private RecyclerView listado;
         b.putString("cedula",p.getCedula());
         b.putString("nombre",p.getNombre());
         b.putString("apellido",p.getApellido());
-        String genero_vector[]=res.getStringArray(R.array.sexo);
-        b.putString("sexo",genero_vector[p.getSexo()]);
+
+        b.putInt("sexo", p.getSexo());
         b.putInt("foto",p.getFoto());
         i.putExtra("datos",b);
         startActivity(i);

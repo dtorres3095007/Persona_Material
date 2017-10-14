@@ -7,6 +7,7 @@
     <string name="guardar">Guardar</string>
     <string name="borrar"> Borrar</string>
     <string name="mensaje_exito"> Persona Guardada</string>
+    <string name="mensaje_exito_modificar"> Persona Modificada</string>
     <string name="cedula">Cedula</string>
     <string name="m">Masculino</string>
     <string name="f">Femenino</string>
@@ -19,6 +20,10 @@
     <string name="si_eliminar">SI</string>
     <string name="no_eliminar">NO</string>
     <string name="no_vacio">No puede Ser Vacio</string>
+    <string name="existe_persona">La persona ya esta registrada</string>
+    <string name="modificar_persona">Modificar Persona</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="error_modificar">Error al Modificar</string>
     <string-array name="sexo">
         <item>@string/m</item>
         <item>@string/f</item>

@@ -20,10 +20,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".Crear_Persona" />
-        <activity android:name=".Detalle_persona"
-           android:theme="@style/AppTheme.NoActionBar"
-            ></activity>
-
+        <activity
+            android:name=".Detalle_persona"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".modificar_persona"></activity>
     </application>
 
 </manifest>

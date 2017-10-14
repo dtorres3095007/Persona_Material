@@ -76,8 +76,9 @@ public void IniciarFotos(){
     }
     public boolean Validar(){
         if (Validar_aux(txtnombre,icajaNombre))return false;
-        else if (Validar_aux(txtcedula,icajacedula))return false;
         else if (Validar_aux(txtapellido,icajaApellido))return false;
+        else if (Validar_aux(txtcedula,icajacedula))return false;
+        else if(Datos.ExistePersona(txtcedula.getText().toString())){icajacedula.setError(res.getString(R.string.existe_persona)); return false;}
         return true;
     }
 
